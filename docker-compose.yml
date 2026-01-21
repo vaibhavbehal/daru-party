@@ -1,0 +1,88 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8090:8080"
+    networks:
+      - s-network
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/docker
+      SPRING_DATASOURCE_USERNAME: navin
+      SPRING_DATASOURCE_PASSWORD: 1234
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: docker
+      MYSQL_USER: navin
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "5433:3306"
+    networks:
+      - s-network
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  mysql_data:
+
+networks:
+  s-network:
+    driver: bridge
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+#	services.app.build=.
+#	services.app.ports[0]=8090:8080
+#	services.app.networks[0]=s-network
+#	services.app.depends_on.mysql.condition=service_healthy
+#	services.app.environment.SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/docker
+#	services.app.environment.SPRING_DATASOURCE_USERNAME=navin
+#	services.app.environment.SPRING_DATASOURCE_PASSWORD=1234
+#
+#	services.mysql.image=mysql:8.0
+#	services.mysql.container_name=mysql-db
+#	services.mysql.environment.MYSQL_ROOT_PASSWORD=1234
+#	services.mysql.environment.MYSQL_DATABASE=docker
+#	services.mysql.environment.MYSQL_USER=navin
+#	services.mysql.environment.MYSQL_PASSWORD=1234
+#	services.mysql.ports[0]=5433:3306
+#	services.mysql.networks[0]=s-network
+#	services.mysql.volumes[0]=mysql_data:/var/lib/mysql
+#
+#	services.mysql.healthcheck.test[0]=CMD
+#	services.mysql.healthcheck.test[1]=mysqladmin
+#	services.mysql.healthcheck.test[2]=ping
+#	services.mysql.healthcheck.test[3]=-h
+#	services.mysql.healthcheck.test[4]=localhost
+#	services.mysql.healthcheck.interval=10s
+#	services.mysql.healthcheck.timeout=5s
+#	services.mysql.healthcheck.retries=10
+#
+#	volumes.mysql_data=
+#
+#	networks.s-network.driver=bridge
+
