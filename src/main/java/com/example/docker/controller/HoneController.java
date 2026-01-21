@@ -33,11 +33,7 @@ public class HoneController {
 		return "nice";   
 	}
 	
-	@GetMapping("nicess")
-	public String methods() {
-//		User u= userService.put(user);
-		return "nicess";   
-	}
+
 	
 	
 }
