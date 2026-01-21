@@ -26,4 +26,12 @@ public class HoneController {
 	public List<User>alll(){
 		return userService.all();  
 	}
+	
+	@GetMapping("nice")
+	public String method() {
+//		User u= userService.put(user);
+		return "nice";   
+	}
+	
+	
 }
