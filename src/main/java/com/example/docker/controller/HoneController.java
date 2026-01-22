@@ -39,7 +39,11 @@ public class HoneController {
 		return "last to test work";    
 	}
 	
-
+	@GetMapping("test")
+	public String methodss() {
+//		User u= userService.put(user);
+		return "last to test test test trtttt";    
+	}
 	
 	
 }
