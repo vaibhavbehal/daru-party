@@ -33,6 +33,12 @@ public class HoneController {
 		return "nice";   
 	}
 	
+	@GetMapping("last")
+	public String methods() {
+//		User u= userService.put(user);
+		return "last to test work";    
+	}
+	
 
 	
 	
