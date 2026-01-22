@@ -43,6 +43,10 @@ post_build:
     - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
     - echo printing imagedefinitions.json
     - cat imagedefinitions.json
+	- ls -la
+	- pwd
+	- test -f imagedefinitions.json && echo "FOUND imagedefinitions.json" || echo "NOT FOUND imagedefinitions.json"
+
 
 
 artifacts:
