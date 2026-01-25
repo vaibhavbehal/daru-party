@@ -45,5 +45,9 @@ public class HoneController {
 		return "last to test test test trtttt";    
 	}
 	
-	
+	@GetMapping("tojo")
+	public String mets() {
+//		User u= userService.put(user);
+		return "tojo";    
+	}
 }
